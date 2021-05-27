@@ -1,7 +1,7 @@
 byebug-skipper
 ==============
 
-![Logo](logo.png)
+![Logo](https://raw.githubusercontent.com/tomdalling/byebug-skipper/main/skipper.png)
 
 Are you tired of going...
 
