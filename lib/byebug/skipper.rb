@@ -1,4 +1,3 @@
-
 module Byebug::Skipper
   extend self
 
