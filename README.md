@@ -41,7 +41,7 @@ require 'byebug-skipper'
 
 ## Usage
 
-This gem adds three new commands to Byebug: `ups`, `downs`, `steps`,
+This gem adds a few new commands to Byebug: `ups`, `downs`, `steps`,
 and `finishs`. These work exactly the same as the built in `up`,
 `down`, `step` and `finish` commands, except they skip over frames of
 garbage. Bon appétit.
