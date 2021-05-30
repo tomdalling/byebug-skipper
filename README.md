@@ -41,19 +41,20 @@ require 'byebug-skipper'
 
 ## Usage
 
-This gem adds three new commands to Byebug: `ups`, `downs`, and
-`finishs`. These work exactly the same as the built in `up`, `down`
-and `finish` commands, except they skip over frames of garbage.
-Bon appétit.
+This gem adds three new commands to Byebug: `ups`, `downs`, `steps`,
+and `finishs`. These work exactly the same as the built in `up`,
+`down`, `step` and `finish` commands, except they skip over frames of
+garbage. Bon appétit.
 
 ## Configuration
 
 By default, the commands in this gem will skip frames that come from
-gems. It does this by looking at the file paths to see if they contain
-something that looks like `/ruby/2.7.3/gems/`.
+gems and Ruby built-ins. It does this by looking at the file paths to
+see if they contain something that looks like `/ruby/2.7.3/gems/`.
 
 If that's not good enough for you, you can configure your own
-matchers. If any of these match the file location, the frame will be skipped.
+matchers. If any of these match the file location, the frame will be
+skipped.
 
 ```ruby
 Byebug::Skipper.skip_matchers = [

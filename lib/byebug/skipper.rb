@@ -3,6 +3,7 @@ module Byebug::Skipper
 
   DEFAULT_SKIP_MATCHERS = [
     %r{/ruby/[^/]+(/bundler)?/gems/}, # gems installed globally or via Bundler
+    %r{/ruby-[^/]+/lib/ruby/[^/]+/}, # Ruby built-in files
   ].freeze
 
   def skip_matchers
@@ -18,17 +19,25 @@ module Byebug::Skipper
   end
 end
 
+require 'delegate'
 require 'byebug'
 require 'byebug/command'
 require 'byebug/helpers/frame'
 require_relative 'skipper/ups_command'
 require_relative 'skipper/downs_command'
 require_relative 'skipper/finishs_command'
+require_relative 'skipper/steps_command'
 
-module Byebug
-  # These classes need to be in the Byebug module or else they don't get picked
-  # up. Cool, bruh.
-  UpsCommand = Byebug::Skipper::UpsCommand
-  DownsCommand = Byebug::Skipper::DownsCommand
-  FinishsCommand = Byebug::Skipper::FinishsCommand
+# Command classes need to be in the Byebug module or else they don't get picked
+# up. Cool, bruh.
+[
+  Byebug::Skipper::UpsCommand,
+  Byebug::Skipper::DownsCommand,
+  Byebug::Skipper::FinishsCommand,
+  Byebug::Skipper::StepsCommand,
+].each do |command_class|
+  Byebug.const_set(
+    command_class.name.split('::').last,
+    command_class,
+  )
 end

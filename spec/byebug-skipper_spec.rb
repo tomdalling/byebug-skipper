@@ -17,6 +17,11 @@ RSpec.describe Byebug::Skipper do
       .to be(true)
   end
 
+  it 'skips Ruby built-in paths by default' do
+    expect(subject.skip?('/Users/tom/.rubies/ruby-2.7.3/lib/ruby/2.7.0/delegate.rb:79'))
+      .to be(true)
+  end
+
   it 'has a configurable list of matchers for skipping paths' do
     subject.skip_matchers = [
       /skipme/,
@@ -30,6 +35,20 @@ RSpec.describe Byebug::Skipper do
       .to be(false)
   end
 
+  xspecify 'manual testing' do
+    num = Class.new(SimpleDelegator).new(
+      Module.new do
+        def self.hello
+          puts 'hello'
+        end
+      end
+    )
+
+    byebug
+    num.hello
+    puts "done"
+  end
+
   it 'adds extra commands to Byebug' do
     require 'byebug/core'
 
@@ -37,6 +56,7 @@ RSpec.describe Byebug::Skipper do
       Byebug::Skipper::UpsCommand,
       Byebug::Skipper::DownsCommand,
       Byebug::Skipper::FinishsCommand,
+      Byebug::Skipper::StepsCommand,
     )
   end
 end
