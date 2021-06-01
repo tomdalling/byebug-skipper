@@ -42,5 +42,5 @@ require_relative 'skipper/steps_command'
   )
 end
 
-require_relative 'skipper/pry' if defined?(Pry)
+require_relative 'skipper/pry' if defined?(PryByebug)
 

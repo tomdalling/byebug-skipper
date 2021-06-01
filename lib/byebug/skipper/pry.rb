@@ -1,5 +1,5 @@
-require 'pry-byebug'
 require_relative '../skipper'
+require 'pry-byebug'
 
 module Byebug::Skipper::Pry
   # All the Pry command classes are implemented the same
