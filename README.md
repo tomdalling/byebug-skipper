@@ -46,6 +46,22 @@ and `finishs`. These work exactly the same as the built in `up`,
 `down`, `step` and `finish` commands, except they skip over frames of
 garbage. Bon appétit.
 
+## Pry Support
+
+This gem will also add it's commands to Pry if the `pry-byebug` gem is
+loaded. Either require 'byebug-skipper' afterwards:
+
+```ruby
+require 'pry-byebug'
+require 'byebug-skipper'
+```
+
+Or directly require the special Pry entry point:
+
+```ruby
+require 'byebug-skipper/pry'
+```
+
 ## Configuration
 
 By default, the commands in this gem will skip frames that come from
