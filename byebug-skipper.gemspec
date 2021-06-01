@@ -14,4 +14,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'byebug'
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'gem-release'
+  s.add_development_dependency 'pry-byebug'
 end
