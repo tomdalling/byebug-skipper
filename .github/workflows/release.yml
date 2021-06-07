@@ -17,11 +17,12 @@ jobs:
           bundler-cache: true
       - uses: actions/setup-node@v2
       - run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+      - run: |
           yarn add standard-version
           yarn run standard-version
       - run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
           git push --follow-tags
       - run: |
           bundle exec gem release
