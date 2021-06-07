@@ -7,7 +7,7 @@ module Byebug::Skipper
   ].freeze
 
   def skip_matchers
-    @skip_matchers || DEFAULT_SKIP_MATCHERS
+    @skip_matchers ||= DEFAULT_SKIP_MATCHERS
   end
 
   def skip_matchers=(matchers)
