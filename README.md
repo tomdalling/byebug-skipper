@@ -29,10 +29,10 @@ just to see your own code? Then this is the gem for you.
 At the gem to your `Gemfile`.
 
 ```ruby
-gem 'byebug-skipper', github: 'tomdalling/byebug-skipper'
+gem 'byebug-skipper'
 ```
 
-And require it just after `byebug`.
+And require it just after `byebug` (or `pry-byebug`).
 
 ```ruby
 require 'byebug'
