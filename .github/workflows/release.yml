@@ -1,0 +1,19 @@
+name: Release Gem
+
+on: workflow_dispatch
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # need all the commits
+      - uses: actions/setup-node@v2
+      - run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          yarn add standard-version
+          yarn run standard-version
+          git push --follow-tags
