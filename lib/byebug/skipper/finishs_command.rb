@@ -3,7 +3,7 @@ module Byebug::Skipper
   class FinishsCommand < Byebug::Command
     include Byebug::Helpers::FrameHelper
 
-    self.allow_in_post_mortem = true
+    self.allow_in_post_mortem = false
 
     def self.regexp
       /^ \s* fin(?:ish)?s \s* $/x
