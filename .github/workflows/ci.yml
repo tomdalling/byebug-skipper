@@ -11,17 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # need all the commits
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: .ruby-version
           bundler-cache: true
-      - run: bundle exec rspec
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0 # need all the commits
       - uses: actions/setup-node@v2
-      - run: yarn add @commitlint/{config-conventional,cli}
-      - run: yarn run commitlint --from "$(git rev-list --max-parents=0 HEAD)"
+      - name: RSpec
+        run: bundle exec rspec
+      - name: commitlint
+        run: |
+          yarn add @commitlint/{config-conventional,cli}
+          yarn run commitlint --from "$(git rev-list --max-parents=0 HEAD)"

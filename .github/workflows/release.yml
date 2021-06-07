@@ -16,13 +16,15 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
       - uses: actions/setup-node@v2
-      - run: |
+      - name: Configure Git
+        run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-      - run: |
+      - name: Bump and Commit
+        run: |
           yarn add standard-version
           yarn run standard-version
-      - run: |
           git push --follow-tags
-      - run: |
+      - name: Push to rubygems.org
+        run: |
           bundle exec gem release
