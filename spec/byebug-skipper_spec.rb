@@ -1,13 +1,13 @@
-require_relative '../lib/byebug/skipper'
+require 'byebug/skipper'
 
 RSpec.describe Byebug::Skipper do
   subject { described_class }
-  before { subject.skip_matchers = subject::DEFAULT_SKIP_MATCHERS }
 
-  module BushKangaroo
-    def self.===(path)
-      path.match?(/_spec\.rb:\d+$/)
-    end
+  around do |example|
+    old_matchers = subject.skip_matchers
+    example.call
+  ensure
+    subject.skip_matchers = old_matchers
   end
 
   it 'skips gem paths by default' do
@@ -24,29 +24,18 @@ RSpec.describe Byebug::Skipper do
 
   it 'has a configurable list of matchers for skipping paths' do
     subject.skip_matchers = [
-      /skipme/,
-      BushKangaroo,
+      /excluded/,
+      ->(path) { path.match?(/_spec\.rb:\d+$/) },
     ]
 
-    expect(subject.skip?('/a/b/skipme/c/d.txt:123')).to be(true)
+    expect(subject.skip?('/a/b/excluded/c/d.txt:123')).to be(true)
     expect(subject.skip?('blah/skippy_spec.rb:666')).to be(true)
-
-    expect(subject.skip?('/Users/tom/.gem/ruby/2.7.3/gems/rspec-core-3.10.1/lib/rspec/core/example.rb'))
-      .to be(false)
   end
 
-  xspecify 'manual testing' do
-    num = Class.new(SimpleDelegator).new(
-      Module.new do
-        def self.hello
-          puts 'hello'
-        end
-      end
-    )
-
-    byebug
-    num.hello
-    puts "done"
+  it 'repaces the defaults when setting custom matchers' do
+    subject.skip_matchers = []
+    expect(subject.skip?('/Users/tom/.gem/ruby/2.7.3/gems/rspec-core-3.10.1/lib/rspec/core/example.rb'))
+      .to be(false)
   end
 
   it 'adds extra commands to Byebug' do
@@ -57,6 +46,26 @@ RSpec.describe Byebug::Skipper do
       Byebug::Skipper::DownsCommand,
       Byebug::Skipper::FinishsCommand,
       Byebug::Skipper::StepsCommand,
+    )
+  end
+
+  it 'adds extra commands to Pry' do
+    require 'pry'
+
+    expect(Pry.commands.keys).not_to include(
+      'ups',
+      'downs',
+      'steps',
+      'finishs',
+    )
+
+    require 'byebug/skipper/pry'
+
+    expect(Pry.commands.keys).to include(
+      'ups',
+      'downs',
+      'steps',
+      'finishs',
     )
   end
 end
