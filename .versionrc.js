@@ -17,4 +17,5 @@ version_rb = {
 module.exports = {
   "bumpFiles": [version_rb],
   "packageFiles": [version_rb],
+  "preset": "angular",
 }
