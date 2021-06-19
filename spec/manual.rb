@@ -29,4 +29,19 @@ pp MuhCode
 # -------
 # Use `steps`. You should land in `MuhCode`, bypassing PP.
 pp MuhCode
-puts "Done."
+puts "Go to Test #5 with `continue`"
+
+
+
+file_before = File.read(__FILE__)
+binding.pry
+
+# Test #5
+# -------
+# Use `skip!` to end testing (will print out success/failure)
+if File.readlines(__FILE__).fetch(__LINE__ - 6).start_with?('# b')
+  File.write(__FILE__, file_before) # undo the commenting
+  puts "Done. (Test #5 was successful)"
+else
+  puts "Test failure: `skip!` command did not comment out the line!"
+end

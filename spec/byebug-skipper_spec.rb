@@ -1,4 +1,4 @@
-require 'byebug/skipper'
+# frozen_string_literal: true
 
 RSpec.describe Byebug::Skipper do
   subject { described_class }
@@ -46,6 +46,7 @@ RSpec.describe Byebug::Skipper do
       Byebug::Skipper::DownsCommand,
       Byebug::Skipper::FinishsCommand,
       Byebug::Skipper::StepsCommand,
+      Byebug::Skipper::SkipBangCommand,
     )
   end
 
@@ -57,6 +58,7 @@ RSpec.describe Byebug::Skipper do
       'downs',
       'steps',
       'finishs',
+      'skip!',
     )
 
     require 'byebug/skipper/pry'
@@ -66,6 +68,7 @@ RSpec.describe Byebug::Skipper do
       'downs',
       'steps',
       'finishs',
+      'skip!',
     )
   end
 end

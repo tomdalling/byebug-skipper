@@ -20,13 +20,19 @@ module Byebug::Skipper
 end
 
 require 'delegate'
+require 'tempfile'
+
 require 'byebug'
-require 'byebug/command'
 require 'byebug/helpers/frame'
+require 'byebug/command'
+require 'byebug/commands/skip'
+
 require_relative 'skipper/ups_command'
 require_relative 'skipper/downs_command'
 require_relative 'skipper/finishs_command'
 require_relative 'skipper/steps_command'
+require_relative 'skipper/comment_line_above'
+require_relative 'skipper/skip_bang_command'
 
 # Command classes need to be in the Byebug module or else they don't get picked
 # up. Cool, bruh.
@@ -35,6 +41,7 @@ require_relative 'skipper/steps_command'
   Byebug::Skipper::DownsCommand,
   Byebug::Skipper::FinishsCommand,
   Byebug::Skipper::StepsCommand,
+  Byebug::Skipper::SkipBangCommand,
 ].each do |command_class|
   Byebug.const_set(
     command_class.name.split('::').last,
