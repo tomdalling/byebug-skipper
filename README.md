@@ -46,6 +46,11 @@ and `finishs`. These work exactly the same as the built in `up`,
 `down`, `step` and `finish` commands, except they skip over frames of
 garbage. Bon appétit.
 
+It also adds a `skip!` command, which works like Byebug's `skip`
+except it also comments out the line above the current line, which is
+usually where you put `byebug` or `binding.pry`, so that next time you
+run your code it won't stop there again. Radical!
+
 ## Pry Support
 
 This gem will also add it's commands to Pry if the `pry-byebug` gem is
