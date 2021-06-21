@@ -53,8 +53,9 @@ run your code it won't stop there again. Radical!
 
 ## Pry Support
 
-This gem will also add it's commands to Pry if the `pry-byebug` gem is
-loaded. Either require 'byebug-skipper' afterwards:
+This gem will also add it's commands (except `skip!`) to Pry if the
+`pry-byebug` gem is loaded. Either require 'byebug-skipper'
+afterwards:
 
 ```ruby
 require 'pry-byebug'
@@ -66,6 +67,10 @@ Or directly require the special Pry entry point:
 ```ruby
 require 'byebug-skipper/pry'
 ```
+
+The `skip!` command is not available because it doesn't seem to work,
+I don't know why, and also `pry-byebug` does not provide a `skip`
+command.
 
 ## Configuration
 
