@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.6](https://github.com/tomdalling/byebug-skipper/compare/v0.3.5...v0.3.6) (2021-06-21)
+
+
+### Bug Fixes
+
+* `skip!` command ([7ae6bd9](https://github.com/tomdalling/byebug-skipper/commit/7ae6bd951d8b5c1594a0da56a251857b7f2bf66c))
+* remove broken `skip!` command from Pry ([77c4f52](https://github.com/tomdalling/byebug-skipper/commit/77c4f525332176d9dc84e0c9d6e2ee4d75dcee9f))
+* require ordering problem ([088e444](https://github.com/tomdalling/byebug-skipper/commit/088e44485f8f495347ca3ffd3a0821e086892170))
+
+
+
 ### [0.3.5](https://github.com/tomdalling/byebug-skipper/compare/v0.3.4...v0.3.5) (2021-06-19)
 
 
