@@ -22,7 +22,7 @@ end
 # -------
 # Use `step` then `finish`. You should step into the Ruby standard library for
 # PP
-binding.pry
+byebug
 pp MuhCode
 
 # Test #2
@@ -34,12 +34,14 @@ puts "Go to Test #5 with `continue`"
 
 
 file_before = File.read(__FILE__)
-binding.pry
+10.times do
+  byebug # `skip!` currently doesn't work with Pry. `skip` is not available either.
 
 # Test #5
 # -------
 # Use `skip!` to end testing (will print out success/failure)
-if File.readlines(__FILE__).fetch(__LINE__ - 6).start_with?('# b')
+end
+if File.readlines(__FILE__).fetch(__LINE__ - 7).start_with?(/\s*# (byebug|binding\.pry)/)
   File.write(__FILE__, file_before) # undo the commenting
   puts "Done. (Test #5 was successful)"
 else

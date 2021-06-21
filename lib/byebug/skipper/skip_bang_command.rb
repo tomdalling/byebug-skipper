@@ -12,7 +12,10 @@ module Byebug::Skipper
       short_description
     end
 
-    def execute
+    # This method gets run once when the command starts. After that, `#execute`
+    # gets called repeatedly from different locations, so we can't use it
+    # without adding random commented lines everywhere.
+    def initialize_attributes
       CommentLineAbove.(context.location)
       super
     end
