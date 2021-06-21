@@ -58,7 +58,6 @@ RSpec.describe Byebug::Skipper do
       'downs',
       'steps',
       'finishs',
-      'skip!',
     )
 
     require 'byebug/skipper/pry'
@@ -68,7 +67,6 @@ RSpec.describe Byebug::Skipper do
       'downs',
       'steps',
       'finishs',
-      'skip!',
     )
   end
 end

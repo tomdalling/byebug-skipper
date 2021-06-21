@@ -23,11 +23,6 @@ module Byebug::Skipper::Pry
       const_name: 'Finishs',
       continues?: true,
     },
-    {
-      cmd: 'skip!',
-      const_name: 'SkipBang',
-      continues?: true,
-    },
   ].freeze
 end
 
