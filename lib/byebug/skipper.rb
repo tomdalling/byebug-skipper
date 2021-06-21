@@ -1,3 +1,5 @@
+require 'byebug'
+
 module Byebug::Skipper
   extend self
 
@@ -22,7 +24,6 @@ end
 require 'delegate'
 require 'tempfile'
 
-require 'byebug'
 require 'byebug/helpers/frame'
 require 'byebug/command'
 require 'byebug/commands/skip'
