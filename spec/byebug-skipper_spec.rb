@@ -15,11 +15,18 @@ RSpec.describe Byebug::Skipper do
       .to be(true)
     expect(subject.skip?('/Users/tom/.gem/ruby/2.7.3/bundler/gems/rails-ce2d72a089f5/activesupport/lib/active_support.rb'))
       .to be(true)
+    expect(subject.skip?('/Users/blakeastley/.rvm/gems/ruby-2.7.3/gems/active_interaction-4.0.1/lib/active_interaction/concerns/runnable.rb'))
+      .to be(true)
   end
 
   it 'skips Ruby built-in paths by default' do
     expect(subject.skip?('/Users/tom/.rubies/ruby-2.7.3/lib/ruby/2.7.0/delegate.rb:79'))
       .to be(true)
+  end
+
+  it 'does not skip other paths' do
+    expect(subject.skip?('/path/to/my/ruby/code.rb')).to be(false)
+    expect(subject.skip?('/path/to/my/ruby-2.7.3/code.rb')).to be(false)
   end
 
   it 'has a configurable list of matchers for skipping paths' do

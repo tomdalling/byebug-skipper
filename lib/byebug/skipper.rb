@@ -5,6 +5,7 @@ module Byebug::Skipper
 
   DEFAULT_SKIP_MATCHERS = [
     %r{/ruby/[^/]+(/bundler)?/gems/}, # gems installed globally or via Bundler
+    %r{/ruby-[^/]+/gems/}, # RVM directory format
     %r{/ruby-[^/]+/lib/ruby/[^/]+/}, # Ruby built-in files
   ].freeze
 
