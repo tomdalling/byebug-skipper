@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [0.4.0](https://github.com/tomdalling/byebug-skipper/compare/v0.3.6...v0.4.0) (2021-07-30)
+
+
+### Features
+
+* support RVM out of the box ([b65b593](https://github.com/tomdalling/byebug-skipper/commit/b65b593b01f4a24a6d828914f981eaef8272c77e))
+
+
+
 ## [0.3.6](https://github.com/tomdalling/byebug-skipper/compare/v0.3.5...v0.3.6) (2021-06-21)
 
 
