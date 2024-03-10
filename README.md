@@ -36,7 +36,7 @@ And require it just after `byebug` (or `pry-byebug`).
 
 ```ruby
 require 'byebug'
-require 'byebug-skipper'
+require 'byebug/skipper'
 ```
 
 ## Usage
@@ -59,13 +59,13 @@ afterwards:
 
 ```ruby
 require 'pry-byebug'
-require 'byebug-skipper'
+require 'byebug/skipper'
 ```
 
 Or directly require the special Pry entry point:
 
 ```ruby
-require 'byebug-skipper/pry'
+require 'byebug/skipper/pry'
 ```
 
 The `skip!` command is not available because it doesn't seem to work,
