@@ -17,6 +17,8 @@ RSpec.describe Byebug::Skipper do
       .to be(true)
     expect(subject.skip?('/Users/blakeastley/.rvm/gems/ruby-2.7.3/gems/active_interaction-4.0.1/lib/active_interaction/concerns/runnable.rb'))
       .to be(true)
+    expect(subject.skip?('/Users/hoylemd/.rbenv/versions/2.7.7/lib/ruby/gems/2.7.0/gems/activesupport-6.1.7.3/lib/active_support/json/decoding.rb:23'))
+      .to be(true)
   end
 
   it 'skips Ruby built-in paths by default' do
