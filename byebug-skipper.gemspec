@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.description = s.summary
   s.files = Dir.glob('lib/**/*.rb')
 
-  s.add_dependency 'byebug'
+  s.add_dependency 'byebug', '>= 11.1.3'
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'gem-release'
   s.add_development_dependency 'pry-byebug'
