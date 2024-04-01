@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [0.5.0](https://github.com/tomdalling/byebug-skipper/compare/v0.4.0...v0.5.0) (2024-04-01)
+
+
+### Bug Fixes
+
+* specify min compatible byebug version in gemspec ([d1558b1](https://github.com/tomdalling/byebug-skipper/commit/d1558b1e7db424e80680f20fd51313b52f76b37f))
+
+
+### Features
+
+* handle rbenv paths ([cb55d64](https://github.com/tomdalling/byebug-skipper/commit/cb55d64877e695c323491f0bc949c95881f264cb))
+
+
+
 # [0.4.0](https://github.com/tomdalling/byebug-skipper/compare/v0.3.6...v0.4.0) (2021-07-30)
 
 
